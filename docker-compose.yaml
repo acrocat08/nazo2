@@ -1,0 +1,27 @@
+version: '3.9'
+services:
+  nazo2-front:
+    build:
+      context: .
+      dockerfile: Dockerfile_front
+    volumes:
+      - ./app:/usr/src/app
+    command: sh -c "npm install && yarn start"
+    ports:
+      - "3000:3000"
+    stdin_open: true 
+
+
+  nazo2-back:
+    build:
+      context: .
+      dockerfile: Dockerfile_back
+    volumes:
+      - ./server:/usr/src/server
+    command: sh -c "npm install && yarn start"
+    ports:
+      - "5000:5000"
+    stdin_open: true 
+
+
+  
